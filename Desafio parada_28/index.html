@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>SKATE TOWN</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=0">
+        <link rel="stylesheet" href="css/estilo.css">        
+    </head>
+    
+    <body>        
+        <div class="carousel-container">
+            <div class="carousel">
+              <img class="carousel-item" src="img/calça sarja cargo bege hocks.jpg" alt="Imagem 1">
+              <img class="carousel-item" src="img/jjaqueta hocks preta e verde.jpg" alt="Imagem 2">
+              <img class="carousel-item" src="img/tenis nike sb force 58 azul.jpg" alt="Imagem 3">             
+            </div>
+        </div>
+
+        <div class="carousel-buttons">
+            <button class="carousel-button" onclick="prevSlide()">Anterior</button>
+            <button class="carousel-button" onclick="nextSlide()">Próximo</button>
+          </div>
+        </div>
+        
+        <script>
+          const carousel = document.querySelector('.carousel');
+          const carouselItems = document.querySelectorAll('.carousel-item');
+          const prevButton = document.querySelector('.carousel-button:nth-child(1)');
+          const nextButton = document.querySelector('.carousel-button:nth-child(2)');
+          let currentIndex = 0;
+        
+          function showSlide(index) {
+            if (index < 0) {
+              index = carouselItems.length - 1;
+            } else if (index >= carouselItems.length) {
+              index = 0;
+            }
+        
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+          }
+        
+          function prevSlide() {
+            showSlide(currentIndex - 1);
+          }
+        
+          function nextSlide() {
+            showSlide(currentIndex + 1);
+          }
+        
+          prevButton.addEventListener('click', prevSlide);
+          nextButton.addEventListener('click', nextSlide);
+        
+          showSlide(currentIndex);
+        </script>
